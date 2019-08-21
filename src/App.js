@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import {connect} from "react-redux";
+import {getSymbolListThunkCreator} from "./redux/thunk";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class AppData extends Component {
+
+    componentDidMount() {
+        debugger
+        this.props.getSymbolList();
+    };
+
+    render() {
+
+        return (
+            <div className="App">
+<h1>jkhkjhkj</h1>
+            </div>
+        );
+    }
 }
 
+
+let mapStateToProps = (state) => {
+    return {
+        state
+    }
+};
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        getSymbolList: (symbolList) => {
+            dispatch(getSymbolListThunkCreator(symbolList));
+        }
+    }
+};
+
+
+
+const App = connect(mapStateToProps, mapDispatchToProps)(AppData);
 export default App;
