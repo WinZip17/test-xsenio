@@ -1,4 +1,5 @@
 import React from 'react';
+import {Draggable} from "react-beautiful-dnd";
 
 const formatDate = (data) => {
     let date = new Date(data);
@@ -15,20 +16,20 @@ const formatDate = (data) => {
     return dd + '.' + mm + '.' + yy;
 };
 
-
 const Table = (props) => {
-
     return (
-        <tbody>
-        <tr>
-            <th scope="col">{props.symbol.id+1}</th>
-            <th scope="col">{props.symbol.name}</th>
-            <th scope="col">{props.symbol.sector}</th>
-            <th scope="col">{props.symbol.lastSalePrice}</th>
-            <th scope="col">{props.symbol.lastSaleSize}</th>
-            <th scope="col">{formatDate(props.symbol.lastUpdated)}</th>
-        </tr>
-        </tbody>
+        <Draggable draggableId={String(props.id)} index={props.index}>
+            {provider => (
+                    <tr ref={provider.innerRef} {...provider.draggableProps} {...provider.dragHandleProps}>
+                        <th scope="col">{props.symbol.id + 1}</th>
+                        <th scope="col">{props.symbol.name}</th>
+                        <th scope="col">{props.symbol.sector}</th>
+                        <th scope="col">{props.symbol.lastSalePrice}</th>
+                        <th scope="col">{props.symbol.lastSaleSize}</th>
+                        <th scope="col">{formatDate(props.symbol.lastUpdated)}</th>
+                    </tr>
+                )}
+        </Draggable>
     )
 }
 

@@ -3,8 +3,14 @@ import './App.css';
 import {connect} from "react-redux";
 import {getSymbolInfoThunkCreator, getSymbolListThunkCreator} from "./redux/thunk";
 import TableContainer from "./components/TableContainer";
-import {addArrSymbolPageAC, updPageAC} from "./redux/actions";
-import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
+import {addArrSymbolPageAC, sortAC, updPageAC} from "./redux/actions";
+import {DragDropContext} from "react-beautiful-dnd";
+
+//импорт SVG
+import first from "./svg/first.png"
+import last from "./svg/last.png"
+import next from "./svg/next.png"
+import previous from "./svg/previous.png"
 
 
 
@@ -70,6 +76,16 @@ class AppData extends Component {
         return result;
     }
 
+    onDragEnd = (result) => {
+        const {destination, source} = result;
+        if (!destination) {
+            return;
+        }
+
+        this.props.sort(source.index, destination.index);
+    }
+
+
 
     render() {
         //пока не загрузиться первая страница значений дальше не грузиться
@@ -78,22 +94,42 @@ class AppData extends Component {
         }
 
             return (
-            <div className="container text-center" >
+                <DragDropContext onDragEnd={this.onDragEnd}>
+                    <div className="container text-center">
 
-                    <h1>Нумерованая таблица, в которой есть отчеты акий</h1>
+                        <h1>Нумерованая таблица, в которой есть отчеты акий</h1>
 
+                        <TableContainer/>
 
-                 <TableContainer />
+                        <div className="row justify-content-center">
 
-                <div className="row justify-content-center">
-                    <button className="btn btn-link btn-sm" onClick={ () => {this.props.updPage(1)}} >Первая страница</button>
-                    <button className="btn btn-link btn-sm" onClick={ () => {this.props.updPage(this.getPreviousPage())}}>Предыдущая страница</button>
-                    <div><div className="m-1">{this.props.state.data.page}</div></div>
-                    <button className="btn btn-link btn-sm" onClick={ () => {this.props.updPage(this.getNextPage())}}>Следущая страница</button>
-                    <button className="btn btn-link btn-sm" onClick={ () => {this.props.updPage(this.getLastPage())}} >Последняя страница</button>
-                </div>
-            </div>
-        );
+                            <button className="btn btn-link btn-sm" onClick={() => {
+                                this.props.updPage(1)
+                            }}><img src={first}/>
+                            </button>
+
+                            <button className="btn btn-link btn-sm" onClick={() => {
+                                this.props.updPage(this.getPreviousPage())
+                            }}><img src={previous}/>
+                            </button>
+
+                            <div>
+                                <div className="m-1 currentPage">{this.props.state.data.page}</div>
+                            </div>
+
+                            <button className="btn btn-link btn-sm" onClick={() => {
+                                this.props.updPage(this.getNextPage())
+                            }}><img src={next}/>
+                            </button>
+
+                            <button className="btn btn-link btn-sm" onClick={() => {
+                                this.props.updPage(this.getLastPage())
+                            }}><img src={last}/>
+                            </button>
+                        </div>
+                    </div>
+                </DragDropContext>
+            );
     }
 }
 
@@ -117,6 +153,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         updPage(page) {
             dispatch(updPageAC(page));
+        },
+        sort (droppableIndexStart, droppableIndexEnd) {
+            dispatch(sortAC(droppableIndexStart, droppableIndexEnd));
         }
     }
 };
