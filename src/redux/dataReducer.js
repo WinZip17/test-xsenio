@@ -1,43 +1,51 @@
-import {GET_SYMBOL_LIST} from "./actions";
-
-
+import {ADD_ARR_SYMBOL_PAGE, GET_SYMBOL_INFO, GET_SYMBOL_LIST, UPD_PAGE} from "./actions";
 
 
 let initialState = {
     symbolList: {},
-    isVisible: false
+    isReadyTableInfo: false,
+    page: 1,
+    lastFormedPages: 0,
+    pageSymbolInfoArr: []
 };
 
-const SingUpUsers = (state = initialState, action) => {
+const DataReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case GET_SYMBOL_LIST:
             return {...state, symbolList: action.symbolList};
+
+        case ADD_ARR_SYMBOL_PAGE:
+            let symbolPage = action.symbolPage;
+            let pageSymbolInfoArr = state.pageSymbolInfoArr;
+            pageSymbolInfoArr[action.page-1] = symbolPage;
+            return {...state, pageSymbolInfoArr: pageSymbolInfoArr, page: action.page, lastFormedPages : action.page};
+
+        case GET_SYMBOL_INFO:
+            let numberPage = action.page -1;
+            let updArrSymbol = action.symbolInfo;
+            let oldArr = state.pageSymbolInfoArr;
+            let newArr = oldArr[numberPage];
+            for (let i = 0; i < 10; i++) {
+                newArr[i].sector = updArrSymbol[i].sector;
+                newArr[i].lastSalePrice = updArrSymbol[i].lastSalePrice;
+                newArr[i].lastSaleSize = updArrSymbol[i].lastSaleSize;
+                newArr[i].lastUpdated = updArrSymbol[i].lastUpdated;
+            }
+            oldArr[numberPage] = newArr;
+            return {...state,
+                pageSymbolInfoArr : oldArr, isReadyTableInfo: true };
+
+        case UPD_PAGE:
+            if (state.page === action.page) {
+                return {...state}
+            }
+            return {...state, page: action.page, isReadyTableInfo: false};
+
         default:
             return state;
     }
 };
 
 
-
-
-//
-// export const getTokenThunkCreator = () => {
-//     return (dispatch) => {
-//         API.getToken()
-//             .then(data => {
-//                 dispatch(setTokenAC(data));
-//             })
-//     }
-// };
-
-// export const getPositionThunkCreator = () => {
-//     return (dispatch) => {
-//         API.getPositions()
-//             .then(data => {
-//                 dispatch(showPositionAC(data));
-//             });
-//     }
-// };
-
-
-export default SingUpUsers;
+export default DataReducer;

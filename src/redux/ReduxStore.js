@@ -1,9 +1,9 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from 'redux-thunk';
-import dataReducer from "./dataReducer";
+import DataReducer from "./dataReducer";
 
 export let reducers = combineReducers({
-    data: dataReducer,
+    data: DataReducer,
 });
 
 let store = createStore(reducers,
