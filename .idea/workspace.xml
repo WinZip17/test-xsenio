@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c4a7869-42b7-4ed4-a4d1-9a2c7b81b199" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/TableContainer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TableContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/ReduxStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/ReduxStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/dataReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/dataReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/svg/first.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/first.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/svg/last.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/last.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/svg/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/next.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/svg/previous.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/previous.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/API.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/thunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/thunk.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
@@ -37,6 +25,15 @@
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#377#412#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/API.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -67,8 +64,8 @@
       <find>GET_SYMBOL_INFO</find>
       <find>IS_READY</find>
       <find>isReadyPage</find>
-      <find>justify-content-center</find>
       <find>vertical-align</find>
+      <find>justify-content-center</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,6 +87,7 @@
         <option value="$PROJECT_DIR$/src/components/Table.js" />
         <option value="$PROJECT_DIR$/src/components/TableContainer.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/API.js" />
       </list>
     </option>
   </component>
@@ -116,18 +114,6 @@
               <item name="test-xsenio" type="b2602c69:ProjectViewProjectNode" />
               <item name="test-xsenio" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test-xsenio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test-xsenio" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test-xsenio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test-xsenio" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="redux" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -201,12 +187,12 @@
       <workItem from="1566319007364" duration="6766000" />
       <workItem from="1566356537424" duration="2520000" />
       <workItem from="1566367294520" duration="19238000" />
-      <workItem from="1566387609588" duration="26809000" />
+      <workItem from="1566387609588" duration="26931000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55333000" />
+    <option name="totallyTimeSpent" value="55455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -320,13 +306,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -379,6 +358,13 @@
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#377#412#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/API.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
         </state>
       </provider>
     </entry>

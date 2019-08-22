@@ -1,5 +1,5 @@
 import {getSymbolInfoAC, getSymbolListAC} from "./actions";
-import {API} from "../api";
+import {API} from "../API";
 
 
 export const getSymbolListThunkCreator = () => {
