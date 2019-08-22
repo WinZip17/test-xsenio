@@ -20,17 +20,17 @@ const Table = (props) => {
     return (
         <Draggable draggableId={String(props.id)} index={props.index}>
             {provider => (
-                    <tr ref={provider.innerRef} {...provider.draggableProps} {...provider.dragHandleProps}>
-                        <th scope="col">{props.symbol.id + 1}</th>
-                        <th scope="col">{props.symbol.name}</th>
-                        <th scope="col">{props.symbol.sector}</th>
-                        <th scope="col">{props.symbol.lastSalePrice}</th>
-                        <th scope="col">{props.symbol.lastSaleSize}</th>
-                        <th scope="col">{formatDate(props.symbol.lastUpdated)}</th>
-                    </tr>
-                )}
+                <tr ref={provider.innerRef} {...provider.draggableProps} {...provider.dragHandleProps} className="table-info">
+                    <th scope="col">{props.symbol.id + 1}</th>
+                    <th scope="col">{props.symbol.name}</th>
+                    <th scope="col">{props.symbol.sector}</th>
+                    <th scope="col">{props.symbol.lastSalePrice}</th>
+                    <th scope="col">{props.symbol.lastSaleSize}</th>
+                    <th scope="col">{formatDate(props.symbol.lastUpdated)}</th>
+                </tr>
+            )}
         </Draggable>
     )
-}
+};
 
 export default Table;

@@ -6,13 +6,11 @@ import TableContainer from "./components/TableContainer";
 import {addArrSymbolPageAC, sortAC, updPageAC} from "./redux/actions";
 import {DragDropContext} from "react-beautiful-dnd";
 
-//импорт SVG
-import first from "./svg/first.png"
-import last from "./svg/last.png"
-import next from "./svg/next.png"
-import previous from "./svg/previous.png"
-
-
+//импорт картинок для кнопок
+import first from "./img/first.png"
+import last from "./img/last.png"
+import next from "./img/next.png"
+import previous from "./img/previous.png"
 
 
 class AppData extends Component {
@@ -31,8 +29,6 @@ class AppData extends Component {
             this.props.getSymbolsInfo(this.props.state.data.page, this.getNameArr());
         }
     }
-
-
 
     //добавление новой информации в существующую (которая была дозагруженна)
     getNameSymbols (page, data) {
@@ -83,21 +79,28 @@ class AppData extends Component {
         }
 
         this.props.sort(source.index, destination.index);
-    }
+    };
 
 
 
     render() {
         //пока не загрузиться первая страница значений дальше не грузиться
         if (!this.props.state.data.isReadyTableInfo) {
-            return <div></div>
+            return (
+                <div className="container h-100">
+                    <div className="row justify-content-center h-100">
+                        <div className="spinner-border text-primary preloader" role="status"></div>
+                    </div>
+                </div>
+                )
+
         }
 
             return (
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <div className="container text-center">
+                    <div className="container text-center pt-1">
 
-                        <h1>Нумерованая таблица, в которой есть отчеты акий</h1>
+                        <h1 className="h1">A numbered table in which there are reports</h1>
 
                         <TableContainer/>
 
@@ -105,26 +108,26 @@ class AppData extends Component {
 
                             <button className="btn btn-link btn-sm" onClick={() => {
                                 this.props.updPage(1)
-                            }}><img src={first}/>
+                            }}><img src={first} alt="first"/>
                             </button>
 
                             <button className="btn btn-link btn-sm" onClick={() => {
                                 this.props.updPage(this.getPreviousPage())
-                            }}><img src={previous}/>
+                            }}><img src={previous} alt="previous"/>
                             </button>
 
                             <div>
-                                <div className="m-1 currentPage">{this.props.state.data.page}</div>
+                                <div className="m-1 currentPage btn btn-info btn-lg badge-pill">{this.props.state.data.page}</div>
                             </div>
 
                             <button className="btn btn-link btn-sm" onClick={() => {
                                 this.props.updPage(this.getNextPage())
-                            }}><img src={next}/>
+                            }}><img src={next} alt="next"/>
                             </button>
 
                             <button className="btn btn-link btn-sm" onClick={() => {
                                 this.props.updPage(this.getLastPage())
-                            }}><img src={last}/>
+                            }}><img src={last} alt="last"/>
                             </button>
                         </div>
                     </div>
