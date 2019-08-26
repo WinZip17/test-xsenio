@@ -1,5 +1,7 @@
 .currentPage {
-    font-size: 24pt;
+    font-size: 20pt;
+    margin: 0;
+    color: black;
 }
 
 .preloader {
@@ -11,3 +13,6 @@ button {
     margin-right: 5px;
 }
 
+img {
+    height: 35px;
+}

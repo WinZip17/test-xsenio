@@ -1,4 +1,4 @@
-import {getSymbolInfoAC, getSymbolListAC} from "./actions";
+import {getSymbolInfoAC, getSymbolListAC, setLoadInfoAC} from "./actions";
 import {API} from "../API";
 
 
@@ -15,7 +15,8 @@ export const getSymbolInfoThunkCreator = (page, symbol) => {
     return (dispatch) => {
         API.getSymbolInfo(symbol)
             .then(data => {
-                dispatch(getSymbolInfoAC(page, data));
+                //если вернулся пустой массив от сервера без ошибки, то ничего не отображаем
+                data.length === 0 ? dispatch(setLoadInfoAC("Sorry, connection problems, data is not fully loaded, try again later")): dispatch(getSymbolInfoAC(page, data));
             })
     }
 };

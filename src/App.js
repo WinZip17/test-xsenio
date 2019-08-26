@@ -36,9 +36,13 @@ class AppData extends Component {
         let nameSymbolsArr = [];
         for (let i = startElement; i < startElement + 10; i++) {
             data[i].id = i;
-            data[i].logo = "";
+            data[i].sector = "";
+            data[i].lastSalePrice = "";
+            data[i].lastSaleSize = "";
+            data[i].lastUpdated = "";
             nameSymbolsArr.push(data[i]);
         };
+
         this.props.addArrSymbolPage(page, nameSymbolsArr)
     }
 
@@ -86,51 +90,58 @@ class AppData extends Component {
     render() {
         //пока не загрузиться первая страница значений дальше не грузиться
         if (!this.props.state.data.isReadyTableInfo) {
-            return (
-                <div className="container h-100">
-                    <div className="row justify-content-center h-100">
-                        <div className="spinner-border text-primary preloader" role="status"></div>
+                return (
+                    <div className="container h-100">
+                        <div className="row justify-content-center h-100">
+                            <div className="spinner-border text-primary preloader" role="status"> </div>
+                        </div>
                     </div>
-                </div>
                 )
+        }
 
+        let loadInfo = "";
+        if (this.props.state.data.loadInfo.length > 0 && this.props.state.data.symbolList.length > 0 ) {
+             loadInfo =  <div className="alert alert-danger" role="alert">*{this.props.state.data.loadInfo}</div>;
         }
 
             return (
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <div className="container text-center pt-1">
 
-                        <h1 className="h1">A numbered table in which there are reports</h1>
+                        <h2>A numbered table in which there are reports</h2>
 
                         <TableContainer/>
 
                         <div className="row justify-content-center">
 
-                            <button className="btn btn-link btn-sm" onClick={() => {
+                            <button className="m-1 btn btn-info btn-lg badge-pill" onClick={() => {
                                 this.props.updPage(1)
                             }}><img src={first} alt="first"/>
                             </button>
 
-                            <button className="btn btn-link btn-sm" onClick={() => {
+                            <button className="m-1 btn btn-info btn-lg badge-pill" onClick={() => {
                                 this.props.updPage(this.getPreviousPage())
                             }}><img src={previous} alt="previous"/>
                             </button>
 
                             <div>
-                                <div className="m-1 currentPage btn btn-info btn-lg badge-pill">{this.props.state.data.page}</div>
+                                <div className="m-1 btn btn-info btn-lg badge-pill"><p className="currentPage">{this.props.state.data.page}</p></div>
                             </div>
 
-                            <button className="btn btn-link btn-sm" onClick={() => {
+                            <button className="m-1 btn btn-info btn-lg badge-pill" onClick={() => {
                                 this.props.updPage(this.getNextPage())
                             }}><img src={next} alt="next"/>
                             </button>
 
-                            <button className="btn btn-link btn-sm" onClick={() => {
+                            <button className="m-1 btn btn-info btn-lg badge-pill" onClick={() => {
                                 this.props.updPage(this.getLastPage())
                             }}><img src={last} alt="last"/>
                             </button>
+
                         </div>
+
                     </div>
+                    {loadInfo}
                 </DragDropContext>
             );
     }

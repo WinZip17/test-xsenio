@@ -2,6 +2,7 @@ import React from 'react';
 import {Draggable} from "react-beautiful-dnd";
 
 const formatDate = (data) => {
+    if (data === "") {return ""}
     let date = new Date(data);
 
     let dd = date.getDate();
@@ -21,7 +22,7 @@ const Table = (props) => {
         <Draggable draggableId={String(props.id)} index={props.index}>
             {provider => (
                 <tr ref={provider.innerRef} {...provider.draggableProps} {...provider.dragHandleProps} className="table-info">
-                    <th scope="col">{props.symbol.id + 1}</th>
+                    <th scope="col" >{props.symbol.id + 1}</th>
                     <th scope="col">{props.symbol.name}</th>
                     <th scope="col">{props.symbol.sector}</th>
                     <th scope="col">{props.symbol.lastSalePrice}</th>

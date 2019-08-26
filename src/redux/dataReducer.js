@@ -1,11 +1,13 @@
-import {ADD_ARR_SYMBOL_PAGE, DRAG_HAPPEND, GET_SYMBOL_INFO, GET_SYMBOL_LIST, UPD_PAGE} from "./actions";
+import {ADD_ARR_SYMBOL_PAGE, DRAG_HAPPEND, GET_SYMBOL_INFO, GET_SYMBOL_LIST, SET_LOAD_INFO, UPD_PAGE} from "./actions";
 
 let initialState = {
     symbolList: {},
     isReadyTableInfo: false,
     page: 1,
     lastFormedPages: 0,
-    pageSymbolInfoArr: []
+    pageSymbolInfoArr: [],
+    loadInfo: "Sorry, connection problems, data is not fully loaded, try again later",
+    isFullReady: false
 };
 
 const DataReducer = (state = initialState, action) => {
@@ -14,11 +16,14 @@ const DataReducer = (state = initialState, action) => {
         case GET_SYMBOL_LIST:
             return {...state, symbolList: action.symbolList};
 
+        case SET_LOAD_INFO:
+            return {...state, loadInfo: action.loadInfo};
+
         case ADD_ARR_SYMBOL_PAGE:
             let symbolPage = action.symbolPage;
             let pageSymbolInfoArr = state.pageSymbolInfoArr;
             pageSymbolInfoArr[action.page-1] = symbolPage;
-            return {...state, pageSymbolInfoArr: pageSymbolInfoArr, page: action.page, lastFormedPages : action.page};
+            return {...state, pageSymbolInfoArr: pageSymbolInfoArr, page: action.page, isReadyTableInfo: true, lastFormedPages : action.page};
 
         case GET_SYMBOL_INFO:
             let numberPage = action.page -1;
@@ -32,13 +37,14 @@ const DataReducer = (state = initialState, action) => {
                 newArr[i].lastUpdated = updArrSymbol[i].lastUpdated;
             }
             oldArr[numberPage] = newArr;
-            return {...state, pageSymbolInfoArr : oldArr, isReadyTableInfo: true };
+
+            return {...state, pageSymbolInfoArr : oldArr, loadInfo: "", isFullReady : true };
 
         case UPD_PAGE:
             if (state.page === action.page) {
                 return {...state}
             }
-            return {...state, page: action.page, isReadyTableInfo: false};
+            return {...state, page: action.page, isReadyTableInfo: false, isFullReady : false};
 
         case DRAG_HAPPEND:
             const correctArr = (_arr, _param) => {

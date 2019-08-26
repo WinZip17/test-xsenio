@@ -21,21 +21,20 @@ const TableContainerData = (props) => {
                 {provided => (
                     <tbody {...provided.droppableProps} ref={provided.innerRef}>
                     {props.pageSymbolInfoArr[props.page - 1].map((symbol, index) => <Table
-                        key={symbol.id} symbol={symbol} index={index} id={symbol.id}/>)}
+                        key={symbol.id} symbol={symbol} index={index} isFullReady={props.isFullReady} id={symbol.id}/>)}
                     {provided.placeholder}
                     </tbody>
                 )}
             </Droppable>
         </table>
-
     );
-
 };
 
 
 let mapStateToProps = (state) => {
     return {
         pageSymbolInfoArr: state.data.pageSymbolInfoArr,
+        isFullReady: state.data.isFullReady,
         page: state.data.page
     }
 };
