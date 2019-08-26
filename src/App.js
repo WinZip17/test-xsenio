@@ -42,7 +42,6 @@ class AppData extends Component {
             data[i].lastUpdated = "";
             nameSymbolsArr.push(data[i]);
         };
-
         this.props.addArrSymbolPage(page, nameSymbolsArr)
     }
 
@@ -76,12 +75,13 @@ class AppData extends Component {
         return result;
     }
 
+
+    //действия перетаскивания
     onDragEnd = (result) => {
         const {destination, source} = result;
         if (!destination) {
             return;
         }
-
         this.props.sort(source.index, destination.index);
     };
 
@@ -139,9 +139,9 @@ class AppData extends Component {
                             </button>
 
                         </div>
-
+                        {loadInfo}
                     </div>
-                    {loadInfo}
+
                 </DragDropContext>
             );
     }
