@@ -100,7 +100,7 @@ class AppData extends Component {
         }
 
         let loadInfo = "";
-        if (this.props.state.data.loadInfo.length > 0 && this.props.state.data.symbolList.length > 0 ) {
+        if (this.props.state.data.symbolList.length > 0  && this.props.state.data.loadInfo.length > 0 ) {
              loadInfo =  <div className="alert alert-danger" role="alert">*{this.props.state.data.loadInfo}</div>;
         }
 

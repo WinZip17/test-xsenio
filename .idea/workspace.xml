@@ -4,6 +4,8 @@
     <list default="true" id="9c4a7869-42b7-4ed4-a4d1-9a2c7b81b199" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/ReduxStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/ReduxStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/dataReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/dataReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +29,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../untitled1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -96,7 +98,8 @@
       <workItem from="1566788080334" duration="4054000" />
       <workItem from="1566805399524" duration="2380000" />
       <workItem from="1566811519411" duration="60000" />
-      <workItem from="1566821718433" duration="2396000" />
+      <workItem from="1566821718433" duration="2561000" />
+      <workItem from="1566827512204" duration="294000" />
     </task>
     <servers />
   </component>

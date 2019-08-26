@@ -23,7 +23,7 @@ const DataReducer = (state = initialState, action) => {
             let symbolPage = action.symbolPage;
             let pageSymbolInfoArr = state.pageSymbolInfoArr;
             pageSymbolInfoArr[action.page-1] = symbolPage;
-            return {...state, pageSymbolInfoArr: pageSymbolInfoArr, page: action.page, isReadyTableInfo: true, lastFormedPages : action.page};
+            return {...state, pageSymbolInfoArr: pageSymbolInfoArr, loadInfo: "", page: action.page, isReadyTableInfo: true, lastFormedPages : action.page};
 
         case GET_SYMBOL_INFO:
             let numberPage = action.page -1;
@@ -37,7 +37,6 @@ const DataReducer = (state = initialState, action) => {
                 newArr[i].lastUpdated = updArrSymbol[i].lastUpdated;
             }
             oldArr[numberPage] = newArr;
-
             return {...state, pageSymbolInfoArr : oldArr, loadInfo: "", isFullReady : true };
 
         case UPD_PAGE:
