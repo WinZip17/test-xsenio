@@ -6,7 +6,7 @@ import "./TableContainer.css"
 
 const TableContainerData = (props) => {
     return (
-        <table className="table table-hover tableCorrect text-nowrap text-truncate">
+        <table className="table table-hover tableCorrect text-truncate">
             <thead>
             <tr className="thead-dark theadCorrect">
                 <th scope="col">№</th>

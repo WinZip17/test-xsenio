@@ -86,9 +86,8 @@ class AppData extends Component {
     };
 
 
-
     render() {
-        //пока не загрузиться первая страница значений дальше не грузиться
+        //прелоадер, ждет до загрузки списка фирм
         if (!this.props.state.data.isReadyTableInfo) {
                 return (
                     <div className="container h-100">
@@ -99,6 +98,8 @@ class AppData extends Component {
                 )
         }
 
+
+        //вывод ошибки в случае глюка сервера с возвратом пустого массива
         let loadInfo = "";
         if (this.props.state.data.symbolList.length > 0  && this.props.state.data.loadInfo.length > 0 ) {
              loadInfo =  <div className="alert alert-danger" role="alert">*{this.props.state.data.loadInfo}</div>;

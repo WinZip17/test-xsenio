@@ -13,18 +13,22 @@ let initialState = {
 const DataReducer = (state = initialState, action) => {
 
     switch (action.type) {
+            //запрос общего списка Symbols
         case GET_SYMBOL_LIST:
             return {...state, symbolList: action.symbolList};
 
+            //изменение статуса загрузги дополительной информации
         case SET_LOAD_INFO:
             return {...state, loadInfo: action.loadInfo};
 
+            //сохранение списка заголовков Symbols, которые на страницы (отображение предварительно информации на странице)
         case ADD_ARR_SYMBOL_PAGE:
             let symbolPage = action.symbolPage;
             let pageSymbolInfoArr = state.pageSymbolInfoArr;
             pageSymbolInfoArr[action.page-1] = symbolPage;
             return {...state, pageSymbolInfoArr: pageSymbolInfoArr, loadInfo: "", page: action.page, isReadyTableInfo: true, lastFormedPages : action.page};
 
+            //добавлние дополнительной информации, после дозагрузки
         case GET_SYMBOL_INFO:
             let numberPage = action.page -1;
             let updArrSymbol = action.symbolInfo;
@@ -39,12 +43,14 @@ const DataReducer = (state = initialState, action) => {
             oldArr[numberPage] = newArr;
             return {...state, pageSymbolInfoArr : oldArr, loadInfo: "", isFullReady : true };
 
+            //изменение номера отображаемой страницы
         case UPD_PAGE:
             if (state.page === action.page) {
                 return {...state}
             }
             return {...state, page: action.page, isReadyTableInfo: false, isFullReady : false};
 
+            //действия при перетаскивании
         case DRAG_HAPPEND:
             const correctArr = (_arr, _param) => {
                 _arr[_param[1]] = _arr.splice(_param[0],1, _arr[_param[1]])[0]

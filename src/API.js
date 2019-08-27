@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const token = "pk_c5cfa1ad28fb4f7bbda943f661edf37b";
+const token = "";
 
 const instance = axios.create({
     baseURL: 'https://cloud.iexapis.com/',
